@@ -264,6 +264,7 @@ Runtime já configurado:
 - CORS baseado em `FRONTEND_URL`
 - Swagger habilitável por `SWAGGER_ENABLED`
 - Jest configurado para testes automatizados com `ts-jest`
+- GitHub Actions preparado para validar `npm ci`, `npm test` e `npm run build`
 
 Rotas já implementadas nesta fase:
 
@@ -433,5 +434,6 @@ npm run start:dev
 1. executar o seed inicial de loja, settings e usuário admin
 2. validar o fluxo real de login administrativo e leitura de `/auth/me`
 3. validar `settings`, `categories`, `products` e `orders` com dados reais
-4. consolidar deploy e ambiente da VPS `lobojow`
-5. manter `bids` como trilha opcional e separada do núcleo do MVP
+4. validar a pipeline do GitHub Actions após o push
+5. consolidar deploy e ambiente da VPS `lobojow`
+6. manter `bids` como trilha opcional e separada do núcleo do MVP

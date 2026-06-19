@@ -78,6 +78,14 @@ Cobertura inicial implementada:
 - utilitários de WhatsApp
 - fluxo principal do `AuthService` com mocks
 
+## CI
+
+Pipeline atual disponível no GitHub Actions:
+
+- install com `npm ci`
+- execução de `npm test`
+- execução de `npm run build`
+
 ## Seed inicial
 
 Use o script abaixo depois de configurar o `.env`:

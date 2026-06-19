@@ -33,6 +33,7 @@ Arquivos existentes após esta etapa:
 - `README.md`
 - `context.md`
 - `CURRENT_STATE.md`
+- `.github/workflows/backend-ci.yml`
 - `jest.config.ts`
 - `package.json`
 - `package-lock.json`
@@ -57,7 +58,7 @@ Arquivos existentes após esta etapa:
 
 O que ainda não existe:
 
-- pipeline de deploy
+- pipeline de deploy para ambiente final
 - testes de integração ponta a ponta
 
 ## Estado do Git
@@ -81,6 +82,7 @@ Implementado:
 - Dockerfile e `docker-compose.yml`
 - seed inicial de loja, settings e admin
 - base de testes automatizados com Jest e `ts-jest`
+- pipeline inicial de CI com GitHub Actions para `npm ci`, `npm test` e `npm run build`
 
 Superfície atual da API:
 
@@ -101,6 +103,7 @@ Pendente de validação:
 - `npm run seed:bootstrap` com MongoDB Atlas real
 - `npm run start:dev` com `.env` real
 - validação ponta a ponta das rotas já implementadas
+- primeira execução da GitHub Action após push
 
 ## Ordem Recomendada de Retomada
 
@@ -109,8 +112,9 @@ Pendente de validação:
 3. executar `npm run seed:bootstrap`
 4. subir a API com `npm run start:dev`
 5. validar login, settings, categories, products e orders
-6. consolidar containerização e deploy do backend
-7. tratar a frente de licitações como fase separada ou recurso opcional
+6. validar a GitHub Action no remoto
+7. consolidar containerização e deploy do backend
+8. tratar a frente de licitações como fase separada ou recurso opcional
 
 ## Decisões Ainda em Aberto
 
@@ -124,6 +128,7 @@ Pendente de validação:
 - aumentar o escopo cedo demais e atrasar a entrega do MVP
 - misturar a frente de licitações com o núcleo operacional do catálogo e pedidos
 - apesar de build e testes base já estarem validados, ainda faltam validações reais com `.env` e MongoDB Atlas
+- a CI foi configurada localmente, mas ainda precisa da primeira execução no GitHub
 - adicionar componentes pesados demais para a capacidade real da VPS `lobojow`
 
 ## Próxima Ação Recomendada
