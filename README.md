@@ -45,6 +45,7 @@ specs/
 3. instalar dependencias com `npm install`
 4. subir em desenvolvimento com `npm run start:dev`
 5. criar loja e admin inicial com `npm run seed:bootstrap`
+6. rodar testes com `npm test`
 
 ## Variaveis de ambiente minimas
 
@@ -63,6 +64,19 @@ SWAGGER_ENABLED=true
 - `POST /api/v1/auth/login`
 - `GET /api/v1/auth/me`
 - `GET /api/docs`
+
+## Testes
+
+Suite atual disponível:
+
+- `npm test`
+
+Cobertura inicial implementada:
+
+- validação de ambiente
+- utilitários de slug
+- utilitários de WhatsApp
+- fluxo principal do `AuthService` com mocks
 
 ## Seed inicial
 

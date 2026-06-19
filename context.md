@@ -263,6 +263,7 @@ Runtime já configurado:
 - `ValidationPipe` global com `whitelist`, `transform` e bloqueio de campos extras
 - CORS baseado em `FRONTEND_URL`
 - Swagger habilitável por `SWAGGER_ENABLED`
+- Jest configurado para testes automatizados com `ts-jest`
 
 Rotas já implementadas nesta fase:
 
@@ -406,6 +407,7 @@ Estado validado:
 - `package-lock.json` gerado
 - checagem com TypeScript sem emissão passou
 - `npm run build` executado com sucesso em ambiente com escrita normal
+- `npm test` executado com sucesso
 - a API já expõe a maior parte do núcleo do MVP em nível de controller/service, mas ainda falta validação ponta a ponta com `.env` real e MongoDB Atlas
 
 Ponto de retorno recomendado:

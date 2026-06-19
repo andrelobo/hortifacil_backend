@@ -33,6 +33,7 @@ Arquivos existentes após esta etapa:
 - `README.md`
 - `context.md`
 - `CURRENT_STATE.md`
+- `jest.config.ts`
 - `package.json`
 - `package-lock.json`
 - `tsconfig.json`
@@ -57,7 +58,7 @@ Arquivos existentes após esta etapa:
 O que ainda não existe:
 
 - pipeline de deploy
-- testes automatizados
+- testes de integração ponta a ponta
 
 ## Estado do Git
 
@@ -79,6 +80,7 @@ Implementado:
 - módulo `deliveries` criado apenas como placeholder vazio
 - Dockerfile e `docker-compose.yml`
 - seed inicial de loja, settings e admin
+- base de testes automatizados com Jest e `ts-jest`
 
 Superfície atual da API:
 
@@ -92,6 +94,7 @@ Validado:
 - geração de `package-lock.json`
 - checagem TypeScript sem emissão
 - `npm run build`
+- `npm test` com 4 suítes e 14 testes passando
 
 Pendente de validação:
 
@@ -120,7 +123,7 @@ Pendente de validação:
 
 - aumentar o escopo cedo demais e atrasar a entrega do MVP
 - misturar a frente de licitações com o núcleo operacional do catálogo e pedidos
-- apesar do build agora estar validado, ainda faltam validações reais com `.env` e MongoDB Atlas
+- apesar de build e testes base já estarem validados, ainda faltam validações reais com `.env` e MongoDB Atlas
 - adicionar componentes pesados demais para a capacidade real da VPS `lobojow`
 
 ## Próxima Ação Recomendada
