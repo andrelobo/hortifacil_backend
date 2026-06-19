@@ -1,6 +1,6 @@
 # CURRENT_STATE - HortiFácil
 
-Data de referência: 2026-06-18
+Data de referência: 2026-06-19
 
 ## Resumo Executivo
 
@@ -19,6 +19,9 @@ Data de referência: 2026-06-18
 - o frontend será tratado pelo OpenDesign em repositório separado
 - o backend deve ser leve, dockerizado e preparado para a VPS `lobojow`
 - frontend e backend devem ficar em repositórios diferentes
+- o backend agora está em repositório Git próprio e separado
+- a estratégia de Git passa a ser branch por feature
+- o `push` para o GitHub continua sendo feito pelo usuário
 - o banco deve ser MongoDB Atlas
 - não usar MongoDB local na VPS
 - a área de licitações existe como frente prevista, mas não deve engolir o MVP principal
@@ -56,6 +59,14 @@ O que ainda não existe:
 - pipeline de deploy
 - testes automatizados
 
+## Estado do Git
+
+- repositório local próprio em `"/home/lobo/Área de trabalho/KODE/horti_facil"`
+- branch atual de base: `main`
+- remoto `origin` configurado para `https://github.com/andrelobo/hortifacil_backend.git`
+- primeiro commit local do backend já criado
+- regra atual: abrir uma branch nova para cada feature antes de implementar
+
 ## Checkpoint Técnico
 
 Implementado:
@@ -80,21 +91,21 @@ Validado:
 - `npm install`
 - geração de `package-lock.json`
 - checagem TypeScript sem emissão
+- `npm run build`
 
 Pendente de validação:
 
 - `npm run seed:bootstrap` com MongoDB Atlas real
 - `npm run start:dev` com `.env` real
-- `npm run build` em ambiente com escrita normal em `dist/`
 - validação ponta a ponta das rotas já implementadas
 
 ## Ordem Recomendada de Retomada
 
-1. copiar `.env.example` para `.env` e preencher variáveis reais
-2. executar `npm run seed:bootstrap`
-3. subir a API com `npm run start:dev`
-4. validar login, settings, categories, products e orders
-5. repetir `npm run build` em ambiente com escrita normal em `dist/`
+1. abrir uma branch nova para a próxima feature
+2. copiar `.env.example` para `.env` e preencher variáveis reais
+3. executar `npm run seed:bootstrap`
+4. subir a API com `npm run start:dev`
+5. validar login, settings, categories, products e orders
 6. consolidar containerização e deploy do backend
 7. tratar a frente de licitações como fase separada ou recurso opcional
 
@@ -109,13 +120,13 @@ Pendente de validação:
 
 - aumentar o escopo cedo demais e atrasar a entrega do MVP
 - misturar a frente de licitações com o núcleo operacional do catálogo e pedidos
-- o install e a checagem TypeScript sem emissao ja foram validados, mas o build com escrita em `dist/` ainda esbarra em limitacao do ambiente de execucao
+- apesar do build agora estar validado, ainda faltam validações reais com `.env` e MongoDB Atlas
 - adicionar componentes pesados demais para a capacidade real da VPS `lobojow`
 
 ## Próxima Ação Recomendada
 
+- abrir uma branch de feature antes da próxima implementação
 - usar o seed para criar a loja e o admin iniciais
 - subir a API localmente com `.env` real
 - validar `auth`, `settings`, `categories`, `products` e `orders` em sequência
-- validar `npm run build` novamente em ambiente com escrita normal em `dist/`
 - deixar o frontend fora deste fluxo técnico imediato, sob responsabilidade do OpenDesign
