@@ -112,6 +112,7 @@ Decisão de arquitetura:
 - backend leve, dockerizado e preparado para rodar na VPS `lobojow`
 - contrato de API estável para consumo pelo frontend hospedado externamente
 - este repositório atual passa a ser a base de implementação do backend
+- o backend já possui repositório Git próprio e separado do futuro frontend
 
 ### Banco de Dados
 
@@ -337,6 +338,31 @@ Benefícios:
 - evolução independente de frontend e backend
 - menor risco operacional durante releases
 
+## Workflow de Git
+
+Regra de trabalho adotada:
+
+- este repositório `horti_facil` é o repositório próprio do backend
+- a branch base atual é `main`
+- cada feature deve nascer em branch própria
+- evitar desenvolvimento direto em `main`
+- o `push` para o GitHub será feito pelo usuário
+
+Convenção recomendada de branches:
+
+- `feature/auth-refino`
+- `feature/products-admin`
+- `feature/orders-flow`
+- `fix/nome-do-ajuste`
+- `chore/nome-da-tarefa`
+
+Fluxo recomendado:
+
+```bash
+cd "/home/lobo/Área de trabalho/KODE/horti_facil"
+git switch -c feature/nome-da-feature
+```
+
 ## Direcionamento de Resposta Técnica
 
 Sempre estruturar análises e decisões em:
@@ -362,6 +388,7 @@ Sempre considerar:
 Situação observada neste momento:
 
 - este repositório passa a ser a base do backend do HortiFácil
+- este backend já está em repositório Git próprio com remoto `origin` configurado
 - o backend NestJS já possui bootstrap inicial, módulos centrais e configuração base
 - as dependências já foram instaladas e a checagem TypeScript sem emissão passou
 - já existem os módulos `auth`, `users`, `stores`, `health`, `categories`, `products`, `settings`, `customers`, `promotions`, `orders` e `deliveries`
@@ -378,11 +405,12 @@ Estado validado:
 - `npm install` concluído
 - `package-lock.json` gerado
 - checagem com TypeScript sem emissão passou
-- o build com saída em `dist/` ainda precisa ser repetido em ambiente com escrita normal, porque neste ambiente houve bloqueio `EROFS`
+- `npm run build` executado com sucesso em ambiente com escrita normal
 - a API já expõe a maior parte do núcleo do MVP em nível de controller/service, mas ainda falta validação ponta a ponta com `.env` real e MongoDB Atlas
 
 Ponto de retorno recomendado:
 
+- abrir uma branch própria para a próxima feature antes de editar código
 - configurar `.env` a partir de `.env.example`
 - executar o seed inicial
 - subir a API em desenvolvimento
@@ -391,6 +419,8 @@ Ponto de retorno recomendado:
 Comandos de retomada:
 
 ```bash
+cd "/home/lobo/Área de trabalho/KODE/horti_facil"
+git switch -c feature/nome-da-feature
 cp .env.example .env
 npm run seed:bootstrap
 npm run start:dev
@@ -401,6 +431,5 @@ npm run start:dev
 1. executar o seed inicial de loja, settings e usuário admin
 2. validar o fluxo real de login administrativo e leitura de `/auth/me`
 3. validar `settings`, `categories`, `products` e `orders` com dados reais
-4. repetir `npm run build` em ambiente com escrita normal em `dist/`
-5. consolidar deploy e ambiente da VPS `lobojow`
-6. manter `bids` como trilha opcional e separada do núcleo do MVP
+4. consolidar deploy e ambiente da VPS `lobojow`
+5. manter `bids` como trilha opcional e separada do núcleo do MVP
