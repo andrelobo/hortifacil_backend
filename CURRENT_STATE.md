@@ -64,7 +64,8 @@ O que ainda não existe:
 ## Estado do Git
 
 - repositório local próprio em `"/home/lobo/Área de trabalho/KODE/horti_facil"`
-- branch atual de base: `main`
+- branch de base: `main`
+- branch de trabalho atual: `feature/test-foundation`
 - remoto `origin` configurado para `https://github.com/andrelobo/hortifacil_backend.git`
 - primeiro commit local do backend já criado
 - regra atual: abrir uma branch nova para cada feature antes de implementar
@@ -83,6 +84,7 @@ Implementado:
 - seed inicial de loja, settings e admin
 - base de testes automatizados com Jest e `ts-jest`
 - pipeline inicial de CI com GitHub Actions para `npm ci`, `npm test` e `npm run build`
+- correção de runtime nos schemas Mongoose para campos anuláveis em `categories` e `products`
 
 Superfície atual da API:
 
@@ -97,24 +99,25 @@ Validado:
 - checagem TypeScript sem emissão
 - `npm run build`
 - `npm test` com 4 suítes e 14 testes passando
+- `.env` real criado com MongoDB Atlas configurado
+- `npm run seed:bootstrap` com MongoDB Atlas real
+- `GET /api/v1/health` com banco respondendo `ok`
+- `POST /api/v1/auth/login`
+- `GET /api/v1/auth/me`
 
 Pendente de validação:
 
-- `npm run seed:bootstrap` com MongoDB Atlas real
-- `npm run start:dev` com `.env` real
 - validação ponta a ponta das rotas já implementadas
 - primeira execução da GitHub Action após push
 
 ## Ordem Recomendada de Retomada
 
 1. abrir uma branch nova para a próxima feature
-2. copiar `.env.example` para `.env` e preencher variáveis reais
-3. executar `npm run seed:bootstrap`
-4. subir a API com `npm run start:dev`
-5. validar login, settings, categories, products e orders
-6. validar a GitHub Action no remoto
-7. consolidar containerização e deploy do backend
-8. tratar a frente de licitações como fase separada ou recurso opcional
+2. manter o `.env` real alinhado com Atlas e com as variáveis de seed
+3. validar `settings`, `categories`, `products` e `orders` com dados reais
+4. validar a GitHub Action no remoto
+5. consolidar containerização e deploy do backend
+6. tratar a frente de licitações como fase separada ou recurso opcional
 
 ## Decisões Ainda em Aberto
 
@@ -127,14 +130,14 @@ Pendente de validação:
 
 - aumentar o escopo cedo demais e atrasar a entrega do MVP
 - misturar a frente de licitações com o núcleo operacional do catálogo e pedidos
-- apesar de build e testes base já estarem validados, ainda faltam validações reais com `.env` e MongoDB Atlas
+- apesar de seed, health e auth já estarem validados com `.env` real e Atlas, ainda faltam testes ponta a ponta das demais rotas
 - a CI foi configurada localmente, mas ainda precisa da primeira execução no GitHub
 - adicionar componentes pesados demais para a capacidade real da VPS `lobojow`
+- durante a validação local, a porta `3000` já estava ocupada por uma instância ativa da própria API, então novos boots devem reutilizar ou trocar a porta quando necessário
 
 ## Próxima Ação Recomendada
 
 - abrir uma branch de feature antes da próxima implementação
-- usar o seed para criar a loja e o admin iniciais
-- subir a API localmente com `.env` real
-- validar `auth`, `settings`, `categories`, `products` e `orders` em sequência
+- manter o seed e o `.env` reais como base de desenvolvimento
+- validar `settings`, `categories`, `products` e `orders` em sequência
 - deixar o frontend fora deste fluxo técnico imediato, sob responsabilidade do OpenDesign

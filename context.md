@@ -409,31 +409,32 @@ Estado validado:
 - checagem com TypeScript sem emissão passou
 - `npm run build` executado com sucesso em ambiente com escrita normal
 - `npm test` executado com sucesso
-- a API já expõe a maior parte do núcleo do MVP em nível de controller/service, mas ainda falta validação ponta a ponta com `.env` real e MongoDB Atlas
+- `.env` real já foi criado com MongoDB Atlas configurado
+- `npm run seed:bootstrap` já foi validado com sucesso contra o Atlas
+- `GET /api/v1/health` respondeu com banco `ok`
+- `POST /api/v1/auth/login` e `GET /api/v1/auth/me` já foram validados com sucesso
+- os schemas de `categories` e `products` já receberam ajuste de tipos explícitos para campos anuláveis usados pelo Mongoose
+- a API já expõe a maior parte do núcleo do MVP em nível de controller/service e já passou pela primeira validação real com `.env` e Atlas
 
 Ponto de retorno recomendado:
 
 - abrir uma branch própria para a próxima feature antes de editar código
-- configurar `.env` a partir de `.env.example`
-- executar o seed inicial
-- subir a API em desenvolvimento
-- validar autenticação, settings, catálogo e criação de pedido
+- manter o `.env` real alinhado com o Atlas e com o seed administrativo
+- validar na sequência `settings`, `categories`, `products` e `orders`
+- preparar os próximos ajustes pensando em deploy backend isolado na VPS `lobojow`
+- manter o frontend fora deste fluxo, em repositório separado com OpenDesign
 
 Comandos de retomada:
 
 ```bash
 cd "/home/lobo/Área de trabalho/KODE/horti_facil"
 git switch -c feature/nome-da-feature
-cp .env.example .env
-npm run seed:bootstrap
 npm run start:dev
 ```
 
 ## Próximos Passos Recomendados
 
-1. executar o seed inicial de loja, settings e usuário admin
-2. validar o fluxo real de login administrativo e leitura de `/auth/me`
-3. validar `settings`, `categories`, `products` e `orders` com dados reais
-4. validar a pipeline do GitHub Actions após o push
-5. consolidar deploy e ambiente da VPS `lobojow`
-6. manter `bids` como trilha opcional e separada do núcleo do MVP
+1. validar `settings`, `categories`, `products` e `orders` com dados reais
+2. validar a pipeline do GitHub Actions após o push
+3. consolidar deploy e ambiente da VPS `lobojow`
+4. manter `bids` como trilha opcional e separada do núcleo do MVP

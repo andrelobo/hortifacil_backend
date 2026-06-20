@@ -27,11 +27,10 @@ export class Category {
   @Prop({ default: true })
   isActive!: boolean;
 
-  @Prop({ default: null })
+  @Prop({ type: Date, default: null })
   archivedAt!: Date | null;
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);
 
 CategorySchema.index({ storeId: 1, slug: 1 }, { unique: true });
-

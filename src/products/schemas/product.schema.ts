@@ -31,7 +31,7 @@ export class Product {
   @Prop({ required: true, min: 0 })
   priceCents!: number;
 
-  @Prop({ default: null, min: 0 })
+  @Prop({ type: Number, default: null, min: 0 })
   promotionalPriceCents!: number | null;
 
   @Prop()
@@ -43,11 +43,10 @@ export class Product {
   @Prop({ default: false })
   isFeatured!: boolean;
 
-  @Prop({ default: null })
+  @Prop({ type: Date, default: null })
   archivedAt!: Date | null;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
 
 ProductSchema.index({ storeId: 1, slug: 1 }, { unique: true });
-
