@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Types } from 'mongoose';
+import { HydratedDocument, Schema as MongooseSchema, Types } from 'mongoose';
 import { Customer } from '../../customers/schemas/customer.schema';
 import { Product } from '../../products/schemas/product.schema';
 import { Store } from '../../stores/schemas/store.schema';
@@ -55,7 +55,7 @@ const OrderAddressSchema = SchemaFactory.createForClass(OrderAddress);
 
 @Schema({ _id: false })
 export class OrderItemSnapshot {
-  @Prop({ type: Types.ObjectId, ref: Product.name, required: true })
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: Product.name, required: true })
   productId!: Types.ObjectId;
 
   @Prop({ required: true })
@@ -81,10 +81,10 @@ const OrderItemSnapshotSchema = SchemaFactory.createForClass(OrderItemSnapshot);
   timestamps: true,
 })
 export class Order {
-  @Prop({ type: Types.ObjectId, ref: Store.name, required: true })
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: Store.name, required: true })
   storeId!: Types.ObjectId;
 
-  @Prop({ type: Types.ObjectId, ref: Customer.name, required: true })
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: Customer.name, required: true })
   customerId!: Types.ObjectId;
 
   @Prop({ required: true })

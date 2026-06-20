@@ -414,13 +414,15 @@ Estado validado:
 - `GET /api/v1/health` respondeu com banco `ok`
 - `POST /api/v1/auth/login` e `GET /api/v1/auth/me` já foram validados com sucesso
 - os schemas de `categories` e `products` já receberam ajuste de tipos explícitos para campos anuláveis usados pelo Mongoose
-- a API já expõe a maior parte do núcleo do MVP em nível de controller/service e já passou pela primeira validação real com `.env` e Atlas
+- os schemas com relacionamentos por `ObjectId` já foram corrigidos para evitar registro como `Mixed` no Mongoose
+- `settings`, `categories`, `products`, `orders`, `customers` e `promotions` já foram validados em fluxo real com `.env` e Atlas
+- a API já expõe a maior parte do núcleo do MVP em nível de controller/service e já passou pela validação real das rotas centrais implementadas do MVP
 
 Ponto de retorno recomendado:
 
-- abrir uma branch própria para a próxima feature antes de editar código
+- fechar a branch de correção atual antes de abrir a próxima feature
 - manter o `.env` real alinhado com o Atlas e com o seed administrativo
-- validar na sequência `settings`, `categories`, `products` e `orders`
+- validar a GitHub Action no remoto e preparar o deploy
 - preparar os próximos ajustes pensando em deploy backend isolado na VPS `lobojow`
 - manter o frontend fora deste fluxo, em repositório separado com OpenDesign
 
@@ -428,13 +430,12 @@ Comandos de retomada:
 
 ```bash
 cd "/home/lobo/Área de trabalho/KODE/horti_facil"
-git switch -c feature/nome-da-feature
+git switch fix/admin-settings-lookup
 npm run start:dev
 ```
 
 ## Próximos Passos Recomendados
 
-1. validar `settings`, `categories`, `products` e `orders` com dados reais
-2. validar a pipeline do GitHub Actions após o push
-3. consolidar deploy e ambiente da VPS `lobojow`
-4. manter `bids` como trilha opcional e separada do núcleo do MVP
+1. validar a pipeline do GitHub Actions após o push
+2. consolidar deploy e ambiente da VPS `lobojow`
+3. manter `bids` como trilha opcional e separada do núcleo do MVP

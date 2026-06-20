@@ -65,7 +65,7 @@ O que ainda não existe:
 
 - repositório local próprio em `"/home/lobo/Área de trabalho/KODE/horti_facil"`
 - branch de base: `main`
-- branch de trabalho atual: `feature/test-foundation`
+- branch de trabalho atual: `fix/admin-settings-lookup`
 - remoto `origin` configurado para `https://github.com/andrelobo/hortifacil_backend.git`
 - primeiro commit local do backend já criado
 - regra atual: abrir uma branch nova para cada feature antes de implementar
@@ -85,6 +85,7 @@ Implementado:
 - base de testes automatizados com Jest e `ts-jest`
 - pipeline inicial de CI com GitHub Actions para `npm ci`, `npm test` e `npm run build`
 - correção de runtime nos schemas Mongoose para campos anuláveis em `categories` e `products`
+- correção estrutural dos schemas Mongoose para `ObjectId` deixar de ser registrado como `Mixed`
 
 Superfície atual da API:
 
@@ -104,20 +105,41 @@ Validado:
 - `GET /api/v1/health` com banco respondendo `ok`
 - `POST /api/v1/auth/login`
 - `GET /api/v1/auth/me`
+- `GET /api/v1/admin/settings`
+- `PUT /api/v1/admin/settings`
+- `GET /api/v1/public/settings`
+- `POST /api/v1/admin/categories`
+- `GET /api/v1/admin/categories`
+- `PATCH /api/v1/admin/categories/:id`
+- `GET /api/v1/public/categories`
+- `POST /api/v1/admin/products`
+- `GET /api/v1/admin/products`
+- `PATCH /api/v1/admin/products/:id`
+- `GET /api/v1/public/products`
+- `GET /api/v1/public/products/:slug`
+- `POST /api/v1/public/orders`
+- `GET /api/v1/admin/orders`
+- `GET /api/v1/admin/orders/:id`
+- `PATCH /api/v1/admin/orders/:id/status`
+- `GET /api/v1/admin/customers`
+- `GET /api/v1/admin/customers/:id`
+- `PATCH /api/v1/admin/customers/:id`
+- `POST /api/v1/admin/promotions`
+- `GET /api/v1/admin/promotions`
+- `PATCH /api/v1/admin/promotions/:id`
+- `GET /api/v1/public/promotions`
 
 Pendente de validação:
 
-- validação ponta a ponta das rotas já implementadas
 - primeira execução da GitHub Action após push
 
 ## Ordem Recomendada de Retomada
 
 1. abrir uma branch nova para a próxima feature
 2. manter o `.env` real alinhado com Atlas e com as variáveis de seed
-3. validar `settings`, `categories`, `products` e `orders` com dados reais
-4. validar a GitHub Action no remoto
-5. consolidar containerização e deploy do backend
-6. tratar a frente de licitações como fase separada ou recurso opcional
+3. validar a GitHub Action no remoto
+4. consolidar containerização e deploy do backend
+5. tratar a frente de licitações como fase separada ou recurso opcional
 
 ## Decisões Ainda em Aberto
 
@@ -130,7 +152,6 @@ Pendente de validação:
 
 - aumentar o escopo cedo demais e atrasar a entrega do MVP
 - misturar a frente de licitações com o núcleo operacional do catálogo e pedidos
-- apesar de seed, health e auth já estarem validados com `.env` real e Atlas, ainda faltam testes ponta a ponta das demais rotas
 - a CI foi configurada localmente, mas ainda precisa da primeira execução no GitHub
 - adicionar componentes pesados demais para a capacidade real da VPS `lobojow`
 - durante a validação local, a porta `3000` já estava ocupada por uma instância ativa da própria API, então novos boots devem reutilizar ou trocar a porta quando necessário
@@ -139,5 +160,5 @@ Pendente de validação:
 
 - abrir uma branch de feature antes da próxima implementação
 - manter o seed e o `.env` reais como base de desenvolvimento
-- validar `settings`, `categories`, `products` e `orders` em sequência
+- validar a GitHub Action e preparar o deploy backend
 - deixar o frontend fora deste fluxo técnico imediato, sob responsabilidade do OpenDesign
