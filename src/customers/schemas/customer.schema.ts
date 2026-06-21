@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Types } from 'mongoose';
+import { HydratedDocument, Schema as MongooseSchema, Types } from 'mongoose';
 import { Store } from '../../stores/schemas/store.schema';
 
 export type CustomerDocument = HydratedDocument<Customer>;
@@ -35,7 +35,7 @@ const CustomerAddressSchema = SchemaFactory.createForClass(CustomerAddress);
   timestamps: true,
 })
 export class Customer {
-  @Prop({ type: Types.ObjectId, ref: Store.name, required: true })
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: Store.name, required: true })
   storeId!: Types.ObjectId;
 
   @Prop({ required: true })
@@ -60,4 +60,3 @@ export class Customer {
 export const CustomerSchema = SchemaFactory.createForClass(Customer);
 
 CustomerSchema.index({ storeId: 1, phone: 1 }, { unique: true });
-

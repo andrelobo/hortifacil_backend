@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Types } from 'mongoose';
+import { HydratedDocument, Schema as MongooseSchema, Types } from 'mongoose';
 import { Store } from '../../stores/schemas/store.schema';
 
 export type UserDocument = HydratedDocument<User>;
@@ -14,7 +14,7 @@ export enum UserRole {
   timestamps: true,
 })
 export class User {
-  @Prop({ type: Types.ObjectId, ref: Store.name, required: true })
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: Store.name, required: true })
   storeId!: Types.ObjectId;
 
   @Prop({ required: true, trim: true })
@@ -39,4 +39,3 @@ export class User {
 export const UserSchema = SchemaFactory.createForClass(User);
 
 UserSchema.index({ storeId: 1, email: 1 }, { unique: true });
-

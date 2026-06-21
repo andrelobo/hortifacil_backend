@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Types } from 'mongoose';
+import { HydratedDocument, Schema as MongooseSchema, Types } from 'mongoose';
 import { Store } from '../../stores/schemas/store.schema';
 
 export type CategoryDocument = HydratedDocument<Category>;
@@ -9,7 +9,7 @@ export type CategoryDocument = HydratedDocument<Category>;
   timestamps: true,
 })
 export class Category {
-  @Prop({ type: Types.ObjectId, ref: Store.name, required: true })
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: Store.name, required: true })
   storeId!: Types.ObjectId;
 
   @Prop({ required: true, trim: true })
@@ -27,11 +27,10 @@ export class Category {
   @Prop({ default: true })
   isActive!: boolean;
 
-  @Prop({ default: null })
+  @Prop({ type: Date, default: null })
   archivedAt!: Date | null;
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);
 
 CategorySchema.index({ storeId: 1, slug: 1 }, { unique: true });
-

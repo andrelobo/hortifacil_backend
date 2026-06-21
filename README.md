@@ -45,6 +45,7 @@ specs/
 3. instalar dependencias com `npm install`
 4. subir em desenvolvimento com `npm run start:dev`
 5. criar loja e admin inicial com `npm run seed:bootstrap`
+6. rodar testes com `npm test`
 
 ## Variaveis de ambiente minimas
 
@@ -63,6 +64,83 @@ SWAGGER_ENABLED=true
 - `POST /api/v1/auth/login`
 - `GET /api/v1/auth/me`
 - `GET /api/docs`
+
+## Swagger
+
+- documentação disponível em `GET /api/docs`
+- habilitado por padrão
+- desativável com `SWAGGER_ENABLED=false`
+- Bearer Auth já configurado na interface
+- documentação atual enriquecida com:
+  - tags por módulo
+  - descrição de endpoints
+  - exemplos de payload
+  - parâmetros de rota e query
+  - indicação visual das rotas protegidas por JWT
+
+## Testes
+
+Comandos disponíveis:
+
+- `npm test`
+- `npm run test:watch`
+
+Estado atual validado:
+
+- `7` suítes
+- `33` testes passando
+- `npm test` validado após a configuração do Swagger
+- `npm run build` validado após a configuração do Swagger
+
+Cobertura automatizada implementada:
+
+- `src/common/config/env.validation.spec.ts`
+  - validação de variáveis obrigatórias
+  - validação de `PORT`
+- `src/common/utils/slugify.util.spec.ts`
+  - normalização de acentos
+  - limpeza de separadores e caracteres
+- `src/common/utils/whatsapp.util.spec.ts`
+  - formatação monetária
+  - geração da mensagem de pedido
+  - geração da URL do WhatsApp
+- `src/auth/auth.service.spec.ts`
+  - login com sucesso
+  - usuário inexistente
+  - usuário inativo
+  - senha inválida
+- `src/settings/settings.service.spec.ts`
+  - leitura administrativa
+  - validação de WhatsApp obrigatório
+  - defaults em atualização
+  - leitura pública da loja padrão
+- `src/categories/categories.service.spec.ts`
+  - criação com slug e defaults
+  - conflito por slug duplicado
+  - listagem pública
+  - atualização com rename e slug
+  - validação de existência da categoria
+- `src/products/products.service.spec.ts`
+  - validação de preço promocional
+  - criação com defaults
+  - validação de categoria vinculada
+  - filtros públicos
+  - atualização com remoção de categoria
+  - validação de produtos disponíveis
+
+Cobertura ainda pendente:
+
+- testes de integração HTTP
+- testes e2e com rotas reais
+- testes automatizados para `orders`, `customers` e `promotions`
+
+## CI
+
+Pipeline atual disponível no GitHub Actions:
+
+- install com `npm ci`
+- execução de `npm test`
+- execução de `npm run build`
 
 ## Seed inicial
 

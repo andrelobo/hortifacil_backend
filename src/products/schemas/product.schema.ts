@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Types } from 'mongoose';
+import { HydratedDocument, Schema as MongooseSchema, Types } from 'mongoose';
 import { Category } from '../../categories/schemas/category.schema';
 import { Store } from '../../stores/schemas/store.schema';
 
@@ -10,10 +10,10 @@ export type ProductDocument = HydratedDocument<Product>;
   timestamps: true,
 })
 export class Product {
-  @Prop({ type: Types.ObjectId, ref: Store.name, required: true })
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: Store.name, required: true })
   storeId!: Types.ObjectId;
 
-  @Prop({ type: Types.ObjectId, ref: Category.name, default: null })
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: Category.name, default: null })
   categoryId!: Types.ObjectId | null;
 
   @Prop({ required: true, trim: true })
@@ -31,7 +31,7 @@ export class Product {
   @Prop({ required: true, min: 0 })
   priceCents!: number;
 
-  @Prop({ default: null, min: 0 })
+  @Prop({ type: Number, default: null, min: 0 })
   promotionalPriceCents!: number | null;
 
   @Prop()
@@ -43,11 +43,10 @@ export class Product {
   @Prop({ default: false })
   isFeatured!: boolean;
 
-  @Prop({ default: null })
+  @Prop({ type: Date, default: null })
   archivedAt!: Date | null;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
 
 ProductSchema.index({ storeId: 1, slug: 1 }, { unique: true });
-

@@ -263,6 +263,8 @@ Runtime já configurado:
 - `ValidationPipe` global com `whitelist`, `transform` e bloqueio de campos extras
 - CORS baseado em `FRONTEND_URL`
 - Swagger habilitável por `SWAGGER_ENABLED`
+- Jest configurado para testes automatizados com `ts-jest`
+- GitHub Actions preparado para validar `npm ci`, `npm test` e `npm run build`
 
 Rotas já implementadas nesta fase:
 
@@ -406,30 +408,39 @@ Estado validado:
 - `package-lock.json` gerado
 - checagem com TypeScript sem emissão passou
 - `npm run build` executado com sucesso em ambiente com escrita normal
-- a API já expõe a maior parte do núcleo do MVP em nível de controller/service, mas ainda falta validação ponta a ponta com `.env` real e MongoDB Atlas
+- `npm test` executado com sucesso
+- `.env` real já foi criado com MongoDB Atlas configurado
+- `npm run seed:bootstrap` já foi validado com sucesso contra o Atlas
+- `GET /api/v1/health` respondeu com banco `ok`
+- `POST /api/v1/auth/login` e `GET /api/v1/auth/me` já foram validados com sucesso
+- os schemas de `categories` e `products` já receberam ajuste de tipos explícitos para campos anuláveis usados pelo Mongoose
+- os schemas com relacionamentos por `ObjectId` já foram corrigidos para evitar registro como `Mixed` no Mongoose
+- o Swagger já foi enriquecido com tags, descrições, exemplos de payload e indicação das rotas protegidas
+- a primeira leva de testes de domínio já cobre `settings`, `categories` e `products`
+- os testes automatizados atuais seguem verdes com `7` suítes e `33` testes passando
+- `settings`, `categories`, `products`, `orders`, `customers` e `promotions` já foram validados em fluxo real com `.env` e Atlas
+- a API já expõe a maior parte do núcleo do MVP em nível de controller/service e já passou pela validação real das rotas centrais implementadas do MVP
 
 Ponto de retorno recomendado:
 
-- abrir uma branch própria para a próxima feature antes de editar código
-- configurar `.env` a partir de `.env.example`
-- executar o seed inicial
-- subir a API em desenvolvimento
-- validar autenticação, settings, catálogo e criação de pedido
+- fechar a branch de correção atual antes de abrir a próxima feature
+- manter o `.env` real alinhado com o Atlas e com o seed administrativo
+- validar a GitHub Action no remoto e preparar o deploy
+- ampliar a cobertura automatizada para `orders`, `customers` e `promotions`
+- preparar os próximos ajustes pensando em deploy backend isolado na VPS `lobojow`
+- manter o frontend fora deste fluxo, em repositório separado com OpenDesign
 
 Comandos de retomada:
 
 ```bash
 cd "/home/lobo/Área de trabalho/KODE/horti_facil"
-git switch -c feature/nome-da-feature
-cp .env.example .env
-npm run seed:bootstrap
+git switch feature/core-domain-tests
 npm run start:dev
 ```
 
 ## Próximos Passos Recomendados
 
-1. executar o seed inicial de loja, settings e usuário admin
-2. validar o fluxo real de login administrativo e leitura de `/auth/me`
-3. validar `settings`, `categories`, `products` e `orders` com dados reais
-4. consolidar deploy e ambiente da VPS `lobojow`
-5. manter `bids` como trilha opcional e separada do núcleo do MVP
+1. validar a pipeline do GitHub Actions após o push
+2. ampliar a cobertura automatizada para `orders`, `customers` e `promotions`
+3. consolidar deploy e ambiente da VPS `lobojow`
+4. manter `bids` como trilha opcional e separada do núcleo do MVP
