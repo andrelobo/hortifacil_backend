@@ -87,8 +87,8 @@ Comandos disponíveis:
 
 Estado atual validado:
 
-- `4` suítes
-- `14` testes passando
+- `7` suítes
+- `33` testes passando
 - `npm test` validado após a configuração do Swagger
 - `npm run build` validado após a configuração do Swagger
 
@@ -109,12 +109,30 @@ Cobertura automatizada implementada:
   - usuário inexistente
   - usuário inativo
   - senha inválida
+- `src/settings/settings.service.spec.ts`
+  - leitura administrativa
+  - validação de WhatsApp obrigatório
+  - defaults em atualização
+  - leitura pública da loja padrão
+- `src/categories/categories.service.spec.ts`
+  - criação com slug e defaults
+  - conflito por slug duplicado
+  - listagem pública
+  - atualização com rename e slug
+  - validação de existência da categoria
+- `src/products/products.service.spec.ts`
+  - validação de preço promocional
+  - criação com defaults
+  - validação de categoria vinculada
+  - filtros públicos
+  - atualização com remoção de categoria
+  - validação de produtos disponíveis
 
 Cobertura ainda pendente:
 
 - testes de integração HTTP
 - testes e2e com rotas reais
-- testes automatizados para `categories`, `products`, `settings`, `orders`, `customers` e `promotions`
+- testes automatizados para `orders`, `customers` e `promotions`
 
 ## CI
 

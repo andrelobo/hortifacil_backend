@@ -416,7 +416,8 @@ Estado validado:
 - os schemas de `categories` e `products` já receberam ajuste de tipos explícitos para campos anuláveis usados pelo Mongoose
 - os schemas com relacionamentos por `ObjectId` já foram corrigidos para evitar registro como `Mixed` no Mongoose
 - o Swagger já foi enriquecido com tags, descrições, exemplos de payload e indicação das rotas protegidas
-- os testes automatizados atuais seguem verdes com `4` suítes e `14` testes passando
+- a primeira leva de testes de domínio já cobre `settings`, `categories` e `products`
+- os testes automatizados atuais seguem verdes com `7` suítes e `33` testes passando
 - `settings`, `categories`, `products`, `orders`, `customers` e `promotions` já foram validados em fluxo real com `.env` e Atlas
 - a API já expõe a maior parte do núcleo do MVP em nível de controller/service e já passou pela validação real das rotas centrais implementadas do MVP
 
@@ -425,7 +426,7 @@ Ponto de retorno recomendado:
 - fechar a branch de correção atual antes de abrir a próxima feature
 - manter o `.env` real alinhado com o Atlas e com o seed administrativo
 - validar a GitHub Action no remoto e preparar o deploy
-- ampliar a cobertura automatizada para módulos de domínio além de `auth`
+- ampliar a cobertura automatizada para `orders`, `customers` e `promotions`
 - preparar os próximos ajustes pensando em deploy backend isolado na VPS `lobojow`
 - manter o frontend fora deste fluxo, em repositório separado com OpenDesign
 
@@ -433,13 +434,13 @@ Comandos de retomada:
 
 ```bash
 cd "/home/lobo/Área de trabalho/KODE/horti_facil"
-git switch fix/admin-settings-lookup
+git switch feature/core-domain-tests
 npm run start:dev
 ```
 
 ## Próximos Passos Recomendados
 
 1. validar a pipeline do GitHub Actions após o push
-2. ampliar a cobertura automatizada dos módulos de negócio
+2. ampliar a cobertura automatizada para `orders`, `customers` e `promotions`
 3. consolidar deploy e ambiente da VPS `lobojow`
 4. manter `bids` como trilha opcional e separada do núcleo do MVP

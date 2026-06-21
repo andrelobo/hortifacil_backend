@@ -65,7 +65,7 @@ O que ainda não existe:
 
 - repositório local próprio em `"/home/lobo/Área de trabalho/KODE/horti_facil"`
 - branch de base: `main`
-- branch de trabalho atual: `fix/admin-settings-lookup`
+- branch de trabalho atual: `feature/core-domain-tests`
 - remoto `origin` configurado para `https://github.com/andrelobo/hortifacil_backend.git`
 - primeiro commit local do backend já criado
 - regra atual: abrir uma branch nova para cada feature antes de implementar
@@ -87,6 +87,7 @@ Implementado:
 - correção de runtime nos schemas Mongoose para campos anuláveis em `categories` e `products`
 - correção estrutural dos schemas Mongoose para `ObjectId` deixar de ser registrado como `Mixed`
 - Swagger enriquecido com tags, auth, descrições e exemplos de payload nos DTOs
+- primeira leva de testes de domínio para `settings`, `categories` e `products`
 
 Superfície atual da API:
 
@@ -100,7 +101,7 @@ Validado:
 - geração de `package-lock.json`
 - checagem TypeScript sem emissão
 - `npm run build`
-- `npm test` com 4 suítes e 14 testes passando
+- `npm test` com 7 suítes e 33 testes passando
 - `npm run build` e `npm test` revalidados após a configuração do Swagger
 - `.env` real criado com MongoDB Atlas configurado
 - `npm run seed:bootstrap` com MongoDB Atlas real
@@ -134,15 +135,17 @@ Validado:
 Pendente de validação:
 
 - primeira execução da GitHub Action após push
-- expansão da cobertura automatizada para módulos além de `auth` e utilitários
+- expansão da cobertura automatizada para `orders`, `customers` e `promotions`
+- testes de integração HTTP e e2e
 
 ## Ordem Recomendada de Retomada
 
 1. abrir uma branch nova para a próxima feature
 2. manter o `.env` real alinhado com Atlas e com as variáveis de seed
 3. validar a GitHub Action no remoto
-4. consolidar containerização e deploy do backend
-5. tratar a frente de licitações como fase separada ou recurso opcional
+4. ampliar a cobertura automatizada para `orders`, `customers` e `promotions`
+5. consolidar containerização e deploy do backend
+6. tratar a frente de licitações como fase separada ou recurso opcional
 
 ## Decisões Ainda em Aberto
 
