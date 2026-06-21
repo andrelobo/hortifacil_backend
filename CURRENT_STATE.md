@@ -86,6 +86,7 @@ Implementado:
 - pipeline inicial de CI com GitHub Actions para `npm ci`, `npm test` e `npm run build`
 - correção de runtime nos schemas Mongoose para campos anuláveis em `categories` e `products`
 - correção estrutural dos schemas Mongoose para `ObjectId` deixar de ser registrado como `Mixed`
+- Swagger enriquecido com tags, auth, descrições e exemplos de payload nos DTOs
 
 Superfície atual da API:
 
@@ -100,6 +101,7 @@ Validado:
 - checagem TypeScript sem emissão
 - `npm run build`
 - `npm test` com 4 suítes e 14 testes passando
+- `npm run build` e `npm test` revalidados após a configuração do Swagger
 - `.env` real criado com MongoDB Atlas configurado
 - `npm run seed:bootstrap` com MongoDB Atlas real
 - `GET /api/v1/health` com banco respondendo `ok`
@@ -132,6 +134,7 @@ Validado:
 Pendente de validação:
 
 - primeira execução da GitHub Action após push
+- expansão da cobertura automatizada para módulos além de `auth` e utilitários
 
 ## Ordem Recomendada de Retomada
 

@@ -65,18 +65,56 @@ SWAGGER_ENABLED=true
 - `GET /api/v1/auth/me`
 - `GET /api/docs`
 
+## Swagger
+
+- documentação disponível em `GET /api/docs`
+- habilitado por padrão
+- desativável com `SWAGGER_ENABLED=false`
+- Bearer Auth já configurado na interface
+- documentação atual enriquecida com:
+  - tags por módulo
+  - descrição de endpoints
+  - exemplos de payload
+  - parâmetros de rota e query
+  - indicação visual das rotas protegidas por JWT
+
 ## Testes
 
-Suite atual disponível:
+Comandos disponíveis:
 
 - `npm test`
+- `npm run test:watch`
 
-Cobertura inicial implementada:
+Estado atual validado:
 
-- validação de ambiente
-- utilitários de slug
-- utilitários de WhatsApp
-- fluxo principal do `AuthService` com mocks
+- `4` suítes
+- `14` testes passando
+- `npm test` validado após a configuração do Swagger
+- `npm run build` validado após a configuração do Swagger
+
+Cobertura automatizada implementada:
+
+- `src/common/config/env.validation.spec.ts`
+  - validação de variáveis obrigatórias
+  - validação de `PORT`
+- `src/common/utils/slugify.util.spec.ts`
+  - normalização de acentos
+  - limpeza de separadores e caracteres
+- `src/common/utils/whatsapp.util.spec.ts`
+  - formatação monetária
+  - geração da mensagem de pedido
+  - geração da URL do WhatsApp
+- `src/auth/auth.service.spec.ts`
+  - login com sucesso
+  - usuário inexistente
+  - usuário inativo
+  - senha inválida
+
+Cobertura ainda pendente:
+
+- testes de integração HTTP
+- testes e2e com rotas reais
+- testes automatizados para `categories`, `products`, `settings`, `orders`, `customers` e `promotions`
 
 ## CI
 
