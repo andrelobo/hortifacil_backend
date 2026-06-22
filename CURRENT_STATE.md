@@ -1,6 +1,6 @@
 # CURRENT_STATE - HortiFácil
 
-Data de referência: 2026-06-19
+Data de referência: 2026-06-22
 
 ## Resumo Executivo
 
@@ -65,7 +65,7 @@ O que ainda não existe:
 
 - repositório local próprio em `"/home/lobo/Área de trabalho/KODE/horti_facil"`
 - branch de base: `main`
-- branch de trabalho atual: `feature/core-domain-tests`
+- última branch consolidada nesta etapa: `feature/orders-customers-promotions-tests`
 - remoto `origin` configurado para `https://github.com/andrelobo/hortifacil_backend.git`
 - primeiro commit local do backend já criado
 - regra atual: abrir uma branch nova para cada feature antes de implementar
@@ -88,6 +88,7 @@ Implementado:
 - correção estrutural dos schemas Mongoose para `ObjectId` deixar de ser registrado como `Mixed`
 - Swagger enriquecido com tags, auth, descrições e exemplos de payload nos DTOs
 - primeira leva de testes de domínio para `settings`, `categories` e `products`
+- cobertura de domínio ampliada para `orders`, `customers` e `promotions`
 
 Superfície atual da API:
 
@@ -101,8 +102,9 @@ Validado:
 - geração de `package-lock.json`
 - checagem TypeScript sem emissão
 - `npm run build`
-- `npm test` com 7 suítes e 33 testes passando
+- `npm test` com 10 suítes e 50 testes passando
 - `npm run build` e `npm test` revalidados após a configuração do Swagger
+- `npm run build` e `npm test` revalidados após a expansão da cobertura para `orders`, `customers` e `promotions`
 - `.env` real criado com MongoDB Atlas configurado
 - `npm run seed:bootstrap` com MongoDB Atlas real
 - `GET /api/v1/health` com banco respondendo `ok`
@@ -135,7 +137,6 @@ Validado:
 Pendente de validação:
 
 - primeira execução da GitHub Action após push
-- expansão da cobertura automatizada para `orders`, `customers` e `promotions`
 - testes de integração HTTP e e2e
 
 ## Ordem Recomendada de Retomada
@@ -143,7 +144,7 @@ Pendente de validação:
 1. abrir uma branch nova para a próxima feature
 2. manter o `.env` real alinhado com Atlas e com as variáveis de seed
 3. validar a GitHub Action no remoto
-4. ampliar a cobertura automatizada para `orders`, `customers` e `promotions`
+4. iniciar testes de integração HTTP do núcleo do MVP
 5. consolidar containerização e deploy do backend
 6. tratar a frente de licitações como fase separada ou recurso opcional
 
@@ -167,4 +168,5 @@ Pendente de validação:
 - abrir uma branch de feature antes da próxima implementação
 - manter o seed e o `.env` reais como base de desenvolvimento
 - validar a GitHub Action e preparar o deploy backend
+- iniciar a camada de testes de integração HTTP
 - deixar o frontend fora deste fluxo técnico imediato, sob responsabilidade do OpenDesign

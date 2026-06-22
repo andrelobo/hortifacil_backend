@@ -417,16 +417,17 @@ Estado validado:
 - os schemas com relacionamentos por `ObjectId` já foram corrigidos para evitar registro como `Mixed` no Mongoose
 - o Swagger já foi enriquecido com tags, descrições, exemplos de payload e indicação das rotas protegidas
 - a primeira leva de testes de domínio já cobre `settings`, `categories` e `products`
-- os testes automatizados atuais seguem verdes com `7` suítes e `33` testes passando
+- a cobertura de domínio agora também cobre `orders`, `customers` e `promotions`
+- os testes automatizados atuais seguem verdes com `10` suítes e `50` testes passando
 - `settings`, `categories`, `products`, `orders`, `customers` e `promotions` já foram validados em fluxo real com `.env` e Atlas
 - a API já expõe a maior parte do núcleo do MVP em nível de controller/service e já passou pela validação real das rotas centrais implementadas do MVP
 
 Ponto de retorno recomendado:
 
-- fechar a branch de correção atual antes de abrir a próxima feature
+- seguir a partir da `main` e abrir uma branch nova para a próxima feature
 - manter o `.env` real alinhado com o Atlas e com o seed administrativo
 - validar a GitHub Action no remoto e preparar o deploy
-- ampliar a cobertura automatizada para `orders`, `customers` e `promotions`
+- iniciar testes de integração HTTP do núcleo
 - preparar os próximos ajustes pensando em deploy backend isolado na VPS `lobojow`
 - manter o frontend fora deste fluxo, em repositório separado com OpenDesign
 
@@ -434,13 +435,13 @@ Comandos de retomada:
 
 ```bash
 cd "/home/lobo/Área de trabalho/KODE/horti_facil"
-git switch feature/core-domain-tests
+git switch main
 npm run start:dev
 ```
 
 ## Próximos Passos Recomendados
 
 1. validar a pipeline do GitHub Actions após o push
-2. ampliar a cobertura automatizada para `orders`, `customers` e `promotions`
-3. consolidar deploy e ambiente da VPS `lobojow`
+2. consolidar deploy e ambiente da VPS `lobojow`
+3. iniciar testes de integração HTTP e depois e2e leves
 4. manter `bids` como trilha opcional e separada do núcleo do MVP

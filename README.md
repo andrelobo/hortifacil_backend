@@ -87,10 +87,10 @@ Comandos disponíveis:
 
 Estado atual validado:
 
-- `7` suítes
-- `33` testes passando
-- `npm test` validado após a configuração do Swagger
-- `npm run build` validado após a configuração do Swagger
+- `10` suítes
+- `50` testes passando
+- `npm test` validado após a expansão da cobertura de domínio
+- `npm run build` validado após a expansão da cobertura de domínio
 
 Cobertura automatizada implementada:
 
@@ -127,12 +127,31 @@ Cobertura automatizada implementada:
   - filtros públicos
   - atualização com remoção de categoria
   - validação de produtos disponíveis
+- `src/orders/orders.service.spec.ts`
+  - criação pública de pedido com snapshots e payload do WhatsApp
+  - ausência de loja padrão
+  - ausência de WhatsApp configurado
+  - normalização inválida de telefone
+  - listagem administrativa
+  - detalhe inexistente
+  - atualização de status
+- `src/customers/customers.service.spec.ts`
+  - upsert a partir do pedido com telefone normalizado
+  - incremento de contadores de pedidos
+  - listagem administrativa
+  - detalhe inexistente
+  - atualização de campos editáveis
+- `src/promotions/promotions.service.spec.ts`
+  - criação com datas, relacionamentos e defaults
+  - validação de período inválido
+  - listagem pública da loja padrão
+  - ausência de loja padrão ativa
+  - atualização de campos e relacionamentos
 
 Cobertura ainda pendente:
 
 - testes de integração HTTP
 - testes e2e com rotas reais
-- testes automatizados para `orders`, `customers` e `promotions`
 
 ## CI
 
