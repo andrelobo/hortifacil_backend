@@ -6,7 +6,7 @@ Data de referência: 2026-06-22
 
 - o projeto está em fase de definição e especificação
 - este repositório passa a ser a base do backend do HortiFácil
-- o frontend ficará fora deste repositório, em trilha separada com OpenDesign
+- o frontend ficará fora deste repositório backend, em trilha separada com OpenDesign
 - a documentação inicial já registra a visão do produto e as decisões arquiteturais principais
 - o fluxo oficial segue SDD, mas o backend já possui bootstrap inicial em código
 - o ponto de retomada agora é operacionalizar o ambiente e validar o fluxo real do MVP
@@ -63,7 +63,7 @@ O que ainda não existe:
 
 ## Estado do Git
 
-- repositório local próprio em `"/home/lobo/Área de trabalho/KODE/horti_facil"`
+- repositório local próprio em `"/home/lobo/Área de trabalho/KODE/horti_facil/backend"`
 - branch de base: `main`
 - última branch consolidada nesta etapa: `feature/orders-customers-promotions-tests`
 - remoto `origin` configurado para `https://github.com/andrelobo/hortifacil_backend.git`

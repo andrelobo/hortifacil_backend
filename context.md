@@ -361,7 +361,7 @@ Convenção recomendada de branches:
 Fluxo recomendado:
 
 ```bash
-cd "/home/lobo/Área de trabalho/KODE/horti_facil"
+cd "/home/lobo/Área de trabalho/KODE/horti_facil/backend"
 git switch -c feature/nome-da-feature
 ```
 
@@ -399,6 +399,7 @@ Situação observada neste momento:
 - a estrutura inicial de `specs/` passa a orientar a implementação antes do código
 - este repositório está sendo usado como base de planejamento e implementação do backend
 - o frontend ficará em repositório distinto sob responsabilidade do OpenDesign
+- o workspace local foi organizado em `horti_facil/backend` e `horti_facil/frontend`
 
 ### Checkpoint de Retomada
 
@@ -434,7 +435,7 @@ Ponto de retorno recomendado:
 Comandos de retomada:
 
 ```bash
-cd "/home/lobo/Área de trabalho/KODE/horti_facil"
+cd "/home/lobo/Área de trabalho/KODE/horti_facil/backend"
 git switch main
 npm run start:dev
 ```
